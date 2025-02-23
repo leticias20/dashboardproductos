@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../redux/actions/productActions';
+import { fetchProducts, deleteProduct } from '../redux/actions/productActions';
 import AddProductForm from './AddProductForm';
 
 const Dashboard = () => {
@@ -10,6 +10,13 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
+
+ const handleDelete = async (productId) => {
+   if (window.confirm('¿Estás seguro de que deseas eliminar este producto?')) {
+     await dispatch(deleteProduct(productId));
+     dispatch(fetchProducts()); // 🔄 Refresca la lista después de eliminar
+   }
+ };
 
   return (
     <div>
@@ -21,9 +28,12 @@ const Dashboard = () => {
 
       <ul>
         {products.map((product) => (
-          <li key={product.i_producto}>
+          <li key={product.idProducto}>
             <h3>{product.nombre}</h3>
             <p>Precio: ${product.precio}</p>
+            <button onClick={() => handleDelete(product.idProducto)} style={{ marginLeft: '10px', backgroundColor: 'red', color: 'white' }}>
+                          Eliminar
+                        </button>
           </li>
         ))}
       </ul>
