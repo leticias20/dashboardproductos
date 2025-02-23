@@ -14,15 +14,16 @@ const ProductList = () => {
   if (error) return <p>Error al cargar productos: {error}</p>;
 
   return (
-    <div className="grid grid-cols-3 gap-4">
-      {products.map((product) => (
-        <div key={product.idProducto} className="border p-4 rounded shadow">
-          <h2 className="text-xl font-bold">{product.idProducto}</h2>
-          <img src={product.image} alt={product.nombre} className="w-full h-40 object-cover" />
-          <p className="text-gray-700">${product.precio}</p>
-        </div>
-      ))}
-    </div>
+    <div>
+                    <h2>Lista de Productos</h2>
+                    <ul>
+                        {products.map(product => (
+                            <li key={product.id_producto}>
+                                {product.nombre} - Cantidad: {product.cantidad} - Precio: ${product.precio}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
   );
 };
 
