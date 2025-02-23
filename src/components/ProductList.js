@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../redux/actions/productActions';
+import AddProductForm from './AddProductForm';
 
-const ProductList = () => {
+const Dashboard = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
 
@@ -10,21 +11,24 @@ const ProductList = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  if (loading) return <p>Cargando productos...</p>;
-  if (error) return <p>Error al cargar productos: {error}</p>;
-
   return (
     <div>
-                    <h2>Lista de Productos</h2>
-                    <ul>
-                        {products.map(product => (
-                            <li key={product.id_producto}>
-                                {product.nombre} - Cantidad: {product.cantidad} - Precio: ${product.precio}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+      <h1>Dashboard de Productos</h1>
+      <AddProductForm />
+
+      {loading && <p>Cargando productos...</p>}
+      {error && <p>Error: {error}</p>}
+
+      <ul>
+        {products.map((product) => (
+          <li key={product.i_producto}>
+            <h3>{product.nombre}</h3>
+            <p>Precio: ${product.precio}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
-export default ProductList;
+export default Dashboard;
