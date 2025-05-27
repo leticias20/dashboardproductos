@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="98bc2298-9a38-41f9-8357-4b80023bab67" name="Changes" comment="agregue funcionalidad eliminar producto" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "leticias20"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/leticias20/dashboardproductos.git",
+    "accountId": "0e717c9a-c15c-49e4-9cd6-3f66e32f1f48"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2tSXpzVDQPqbfWx3Ny8tZ4Vi5Mi" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/LetySanchez_PC/Documents/Projects/dashboard-productos"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\LetySanchez_PC\Documents\Projects\dashboard-productos\src" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="98bc2298-9a38-41f9-8357-4b80023bab67" name="Changes" comment="" />
+      <created>1740346636045</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1740346636045</updated>
+    </task>
+    <task id="LOCAL-00001" summary="initial changes">
+      <option name="closed" value="true" />
+      <created>1740347061298</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1740347061298</updated>
+    </task>
+    <task id="LOCAL-00002" summary="cambiar apariencia Mostrar productos">
+      <option name="closed" value="true" />
+      <created>1740348519421</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1740348519421</updated>
+    </task>
+    <task id="LOCAL-00003" summary="funcionalidad nueva agregar producto">
+      <option name="closed" value="true" />
+      <created>1740351975371</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1740351975371</updated>
+    </task>
+    <task id="LOCAL-00004" summary="agregue funcionalidad eliminar producto">
+      <option name="closed" value="true" />
+      <created>1740354888696</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1740354888696</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="a78182f9-d7ab-4e74-88c5-6a91a5a97404" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="a78182f9-d7ab-4e74-88c5-6a91a5a97404">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial changes" />
+    <MESSAGE value="cambiar apariencia Mostrar productos" />
+    <MESSAGE value="funcionalidad nueva agregar producto" />
+    <MESSAGE value="agregue funcionalidad eliminar producto" />
+    <option name="LAST_COMMIT_MESSAGE" value="agregue funcionalidad eliminar producto" />
+  </component>
+</project>

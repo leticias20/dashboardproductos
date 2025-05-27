@@ -49,3 +49,19 @@ export const deleteProduct = (productId) => async (dispatch) => {
   }
 };
 
+// Acción para actualizar un producto
+export const updateProduct = (productId, updatedData) => async (dispatch) => {
+  dispatch({ type: 'UPDATE_PRODUCT_REQUEST', payload: { productId, updatedData } });
+
+  try {
+    const response = await axios.put(`api/productos/${productId}`, updatedData);
+
+    dispatch({ type: 'UPDATE_PRODUCT_SUCCESS', payload: response.data });
+  } catch (error) {
+    dispatch({
+      type: 'UPDATE_PRODUCT_FAILURE',
+      payload: error.response ? error.response.data.message : error.message,
+    });
+  }
+};
+
