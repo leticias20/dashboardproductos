@@ -5,9 +5,9 @@ import { addProduct } from '../redux/actions/productActions';
 const AddProductForm = () => {
   const dispatch = useDispatch();
   const [product, setProduct] = useState({
-    nombre: '',
     precio: '',
     categoria: '',
+    cantidad: ''
   });
 
   const handleChange = (e) => {
@@ -24,6 +24,7 @@ const AddProductForm = () => {
     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '300px' }}>
       <input type="text" name="nombre" placeholder="Nombre del producto" value={product.nombre} onChange={handleChange} required />
       <input type="number" name="precio" placeholder="Precio" value={product.precio} onChange={handleChange} required />
+      <input type="number" name="cantidad" placeholder="Cantidad" value={product.cantidad} onChange={handleChange} required />
       <input type="text" name="categoria" placeholder="Categoría" value={product.categoria} onChange={handleChange} required />
       <button type="submit">Agregar Producto</button>
     </form>

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts, deleteProduct, updateProduct } from '../redux/actions/productActions';
+import { fetchProducts, fetchProductById, deleteProduct, updateProduct } from '../redux/actions/productActions';
 import AddProductForm from './AddProductForm';
+import HamburgerMenu from './HamburgerMenu';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -11,10 +13,15 @@ const Dashboard = () => {
   const [editingProduct, setEditingProduct] = useState(null);
   const [editNombre, setEditNombre] = useState('');
   const [editPrecio, setEditPrecio] = useState('');
+  const [searchId, setSearchId] = useState('');
 
-  useEffect(() => {
+useEffect(() => {
+  if (searchId.trim() === '') {
     dispatch(fetchProducts());
-  }, [dispatch]);
+  } else {
+    dispatch(fetchProductById(searchId));
+  }
+}, [dispatch, searchId]);
 
   const handleDelete = async (productId) => {
     if (window.confirm('¿Estás seguro de que deseas eliminar este producto?')) {
@@ -45,13 +52,32 @@ const Dashboard = () => {
 
   return (
     <div>
+       <HamburgerMenu>
+  <ul style={{ listStyle: 'none', padding: 0 }}>
+    <li><Link to="/">Inicio</Link></li>
+    <li><Link to="/productos">Dashboard de Productos</Link></li>
+    <li><Link to="/movimientos">Dashboard de Movimientos</Link></li>
+  </ul>
+</HamburgerMenu>
       <h1>Dashboard de Productos</h1>
       <AddProductForm />
+
+        {/* Input de búsqueda por ID */}
+    <div style={{ margin: '1rem 0' }}>
+      <input
+        type="text"
+        placeholder="Buscar por ID"
+        value={searchId}
+        onChange={(e) => setSearchId(e.target.value)}
+        style={{ padding: '0.5rem', width: '200px' }}
+      />
+    </div>
 
       {loading && <p>Cargando productos...</p>}
       {error && <p>Error: {error}</p>}
 
-      <ul>
+      
+      <ul>   
         {products.map((product) => (
           <li key={product.idProducto}>
             {editingProduct === product.idProducto ? (
@@ -75,6 +101,7 @@ const Dashboard = () => {
               <>
                 <h3>{product.nombre}</h3>
                 <p>Precio: ${product.precio}</p>
+                <p>Cantidad: {product.cantidad}</p>
                 <button onClick={() => handleEditClick(product)} style={{ marginRight: '10px' }}>
                   Editar
                 </button>

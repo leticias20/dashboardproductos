@@ -1,11 +1,17 @@
-import React from 'react';
-import ProductList from './components/ProductList';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Dashboard from './components/ProductList';
+import MovimientosList from './components/MovimientosList';
+
 
 function App() {
   return (
-    <div className="container mx-auto p-4">
-      <ProductList />
-    </div>
+   <Router>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/productos" element={<Dashboard />} />
+        <Route path="/movimientos" element={<MovimientosList />} />
+      </Routes>
+    </Router>
   );
 }
 
