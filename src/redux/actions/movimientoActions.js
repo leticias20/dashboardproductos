@@ -26,4 +26,19 @@ export const deleteMovimiento = (movimientoId) => async (dispatch) => {
       payload: error.response ? error.response.data.message : error.message,
     });
   }
+
+};
+
+// Acción para agregar un movimiento
+export const addMovimiento = (movimientoData) => async (dispatch) => {
+  dispatch({ type: 'ADD_MOVIMIENTO_REQUEST' });
+  try {
+    const response = await axios.post('api/movimientos', movimientoData);
+    dispatch({ type: 'ADD_MOVIMIENTO_SUCCESS', payload: response.data });
+  } catch (error) {
+    dispatch({
+      type: 'ADD_MOVIMIENTO_FAILURE',
+      payload: error.response ? error.response.data.message : error.message,
+    });
+  }
 };
