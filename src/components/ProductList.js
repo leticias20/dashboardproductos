@@ -13,6 +13,7 @@ const Dashboard = () => {
   const [editingProduct, setEditingProduct] = useState(null);
   const [editNombre, setEditNombre] = useState('');
   const [editPrecio, setEditPrecio] = useState('');
+  const [editCantidad, setEditCantidad] = useState('');
   const [searchId, setSearchId] = useState('');
 
 useEffect(() => {
@@ -35,12 +36,13 @@ useEffect(() => {
     setEditingProduct(product.idProducto);
     setEditNombre(product.nombre);
     setEditPrecio(product.precio);
+    setEditCantidad(product.cantidad);
   };
 
   // Guardar cambios
   const handleEditSave = async (e) => {
     e.preventDefault();
-    await dispatch(updateProduct(editingProduct, { nombre: editNombre, precio: editPrecio }));
+    await dispatch(updateProduct(editingProduct, { nombre: editNombre, precio: editPrecio, cantidad: editCantidad }));
     setEditingProduct(null);
     dispatch(fetchProducts());
   };
@@ -94,6 +96,13 @@ useEffect(() => {
                   onChange={(e) => setEditPrecio(e.target.value)}
                   required
                 />
+                <input
+                  type="number"
+                  value={editCantidad}
+                  readOnly
+                  required
+                  placeholder="Cantidad"
+                  />
                 <button type="submit">Guardar</button>
                 <button type="button" onClick={handleEditCancel}>Cancelar</button>
               </form>

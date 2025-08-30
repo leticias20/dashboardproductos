@@ -23,6 +23,16 @@ const initialState = {
               products: state.products.filter((product) => product.id !== action.payload),
             };
 
+      case 'UPDATE_PRODUCT_QUANTITY_SUCCESS':
+  return {
+    ...state,
+    products: state.products.map(product =>
+      product.id_producto === action.payload.id_producto
+        ? { ...product, cantidad: action.payload.cantidad }
+        : product
+    ),
+  };
+
           case 'FETCH_PRODUCTS_FAILURE':
           case 'ADD_PRODUCT_FAILURE':
           case 'DELETE_PRODUCT_FAILURE':

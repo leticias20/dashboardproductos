@@ -80,3 +80,18 @@ export const fetchProductById = (id) => async (dispatch) => {
     });
   }
 };
+
+// Acción para actualizar cantidad de producto
+export const updateProductQuantity = (productId, newCantidad) => async (dispatch) => {
+  dispatch({ type: 'UPDATE_PRODUCT_QUANTITY_REQUEST', payload: { productId, newCantidad } });
+  try {
+    const response = await axios.put(`api/productos/${productId}/cantidad`, { cantidad: newCantidad });
+    console.log("Respuesta de actualización de cantidad:", response.data);
+    dispatch({ type: 'UPDATE_PRODUCT_QUANTITY_SUCCESS', payload: response.data });
+  } catch (error) {
+    dispatch({
+      type: 'UPDATE_PRODUCT_QUANTITY_FAILURE',
+      payload: error.response ? error.response.data.message : error.message,
+    });
+  }
+};
