@@ -36,3 +36,222 @@
     transform: rotate(360deg);
   }
 }
+
+:root{
+  --bg:#f4f7fb;
+  --card:#ffffff;
+  --accent:#1976d2;
+  --muted:#6b7280;
+  --danger:#e53935;
+  --radius:12px;
+}
+
+body{
+  background: var(--bg);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:#121212;
+}
+
+/* Dashboard container */
+.dashboard-container{
+  max-width:1100px;
+  margin:32px auto;
+  padding:24px;
+}
+
+/* Asegura header de dashboard consistente */
+.dashboard-header{
+  display: flex;
+  align-items: center;      /* centra verticalmente */
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: nowrap; /* evita que los elementos del header se apilen */
+
+  min-height: 72px;        /* fijar altura mínima igual en ambos dashboards */
+  padding: 8px 0;
+}
+
+/* Título y badge juntos */
+.dashboard-title{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Controles del header (search + add form) */
+.header-controls { 
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px; /* separa header del contenido (cards) */
+}
+
+
+/* uniformizar la altura de formularios y botones del header */
+.header-controls form,
+.header-controls .add-form {
+  margin-left: 12px; /* separa el formulario de otros controles */
+  min-width: 260px;  /* evita que el botón quede pegado si el form es muy pequeño */
+}
+/* si el botón está dentro del formulario, aumentar su margen izquierdo */
+.header-controls .add-form button {
+  margin-left: 6px;
+}
+
+.header-controls > * {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;            /* misma altura para inputs/botones en header */
+}
+
+/* inputs y selects del header */
+.header-controls input,
+.header-controls select,
+.header-controls button {
+  height: 36px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Ajuste para que stats y card-list empiecen a la misma altura */
+.stats {
+  margin-top: 12px;
+}
+
+/* opcional: reduce gap del título si se ve muy separado */
+.dashboard-title h1 { margin: 0; font-size: 1.45rem; }
+
+
+/* Search */
+.search-input{
+  padding:8px 12px;
+  border-radius:8px;
+  border:1px solid #e6e9ef;
+  width:260px;
+  background:#fff;
+  box-shadow:0 1px 4px rgba(16,24,40,0.03);
+}
+
+/* Stats */
+.stats{
+  display:flex;
+  gap:12px;
+  margin-bottom:18px;
+}
+.stat{
+  background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,250,0.9));
+  padding:12px 16px;
+  border-radius:10px;
+  box-shadow:0 1px 6px rgba(16,24,40,0.04);
+  display:flex;
+  flex-direction:column;
+  min-width:140px;
+}
+.stat .label{ font-size:0.8rem; color:var(--muted); }
+.stat .value{ font-weight:600; font-size:1.1rem; margin-top:6px; color:var(--accent); }
+
+/* Card grid */
+.card-list{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap:14px;
+  padding:0;
+  list-style:none;
+}
+
+/* Card */
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:14px;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  position:relative;
+}
+.card h3{
+  margin:0;
+  font-size:1.05rem;
+}
+.card .meta{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  color:var(--muted);
+  font-size:0.9rem;
+}
+.badge{
+  background:#eef6ff;
+  color:var(--accent);
+  padding:4px 8px;
+  border-radius:999px;
+  font-weight:600;
+  font-size:0.82rem;
+}
+.qty{
+  background:#f6f8fb;
+  color:#111827;
+  padding:4px 8px;
+  border-radius:8px;
+  font-weight:600;
+  font-size:0.85rem;
+}
+
+/* Actions */
+.card-actions{
+  display:flex;
+  gap:8px;
+  margin-top:auto;
+  justify-content:flex-end;
+}
+.btn{
+  border:0;
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+.btn-edit{ background:#f0f7ff; color:var(--accent); }
+.btn-delete{ background:var(--danger); color:#fff; }
+
+.form-inline input[type="text"],
+.form-inline input[type="number"]{
+  padding:6px 8px;
+  margin-right:8px;
+  border-radius:8px;
+  border:1px solid #e6e9ef;
+}
+
+/* Responsive tweaks */
+@media (max-width:520px){
+  .header-controls{ flex-direction:column; align-items:flex-end; }
+  .search-input{ width:100%; }
+}
+
+.hamburger-wrapper { display:inline-block; }
+.hamburger-btn {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: 8px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.hamburger-btn span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: #333;
+  transition: transform .18s, opacity .18s;
+}
+.hamburger-btn.open span:nth-child(1) {
+  transform: rotate(45deg) translate(3px, 3px);
+}
+.hamburger-btn.open span:nth-child(2) {
+  opacity: 0;
+}

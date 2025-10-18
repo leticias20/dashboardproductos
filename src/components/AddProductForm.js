@@ -28,7 +28,7 @@ const AddProductForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '300px' }}>
+   <form className="add-form" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '5px', width: '700px' }}>
       <input type="text" name="nombre" placeholder="Nombre del producto" value={product.nombre} onChange={handleChange} required />
       <input type="number" name="precio" placeholder="Precio" value={product.precio} onChange={handleChange} required />
       <input type="number" name="cantidad" placeholder="Cantidad" value={product.cantidad} onChange={handleChange} required />
