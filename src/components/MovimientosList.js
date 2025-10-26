@@ -1,8 +1,9 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // Asegúrate de tener estas acciones en tu Redux
 import { fetchMovimientos, deleteMovimiento} from '../redux/actions/movimientoActions';
+import { fetchProducts } from '../redux/actions/productActions';
 import { Link } from 'react-router-dom';
 import HamburgerMenu from './HamburgerMenu';
 import AddMovimientoForm from './AddMovimientoForm'; // Importa el formulario
@@ -19,11 +20,42 @@ const MovimientosList = () => {
   const error = movimientosState.error;
 
   const products = productsState.products || [];
+  const [searchName, setSearchName] = useState('');
 
 
-  useEffect(() => {
+ useEffect(() => {
     dispatch(fetchMovimientos());
-  }, [dispatch]);
+    if (!products || products.length === 0) {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, products.length]);
+
+  const productMap = useMemo(() => {
+    return (products || []).reduce((acc, p) => {
+      const key = (p.idProducto ?? p.id ?? p._id);
+      if (key != null) {
+        acc[String(key)] = p.nombre || p.name || p.productoNombre || '';
+      }
+      return acc;
+    }, {});
+  }, [products]);
+
+   const getProductName = (mov) => {
+    const prodIdKey = String(mov.id_producto);
+    let nombre = productMap[prodIdKey] || null;
+    if (!nombre) {
+      const prod = (products || []).find((p) => String(p.idProducto ?? p.id ?? p._id) === prodIdKey);
+      nombre = prod ? (prod.nombre || prod.name || prod.productoNombre || '') : '';
+    }
+    return nombre;
+  };
+
+    // aplicar filtro por nombre (case-insensitive)
+  const filteredMovimientos = (movimientos || []).filter((mov) => {
+    if (!searchName) return true;
+    const nombre = (getProductName(mov) || '').toLowerCase();
+    return nombre.includes(searchName.trim().toLowerCase());
+  });
 
   const handleDelete = async (movimientoId) => {
     if (window.confirm('¿Estás seguro de que deseas eliminar este movimiento?')) {
@@ -38,7 +70,7 @@ const MovimientosList = () => {
 
   return (
     <div className="dashboard-container">
-      <div className="dashboard-header" style={{ alignItems: 'center' }}>
+      <div className="dashboard-header" style={{ alignItems: 'left' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <HamburgerMenu>
             <ul style={{ listStyle: 'none', padding: 8, margin: 0 }}>
@@ -48,13 +80,20 @@ const MovimientosList = () => {
             </ul>
           </HamburgerMenu>
 
-          <div className="dashboard-title">
-            <h1 style={{ margin: 0, fontSize: '1.45rem' }}>Dashboard de Movimientos</h1>
+          <div className="dashboard-title" style={{ display: 'inline-flex', alignItems: 'left', gap: 8 }}>
+            <h1 style={{ margin: 0, fontSize: '1.45rem', whiteSpace: 'nowrap' }}>Dashboard de Movimientos</h1>
             <span className="badge">Movimientos</span>
           </div>
         </div>
 
-        <div className="header-controls">
+         <div className="header-controls">
+          <input
+            className="search-input"
+            type="text"
+            placeholder="Buscar por nombre de producto..."
+            value={searchName}
+            onChange={(e) => setSearchName(e.target.value)}
+          />
           <AddMovimientoForm />
         </div>
       </div>
@@ -74,12 +113,15 @@ const MovimientosList = () => {
       {error && <p style={{ color: 'red' }}>Error: {error}</p>}
 
       <ul className="card-list">
-        {movimientos.map((mov) => {
-          const producto = products.find(p => p.idProducto === Number(mov.id_producto));
+        {filteredMovimientos.map((mov) => {
+          const prodIdKey = String(mov.id_producto);
+         const productoNombre = getProductName(mov) || null;
           return (
             <li key={mov.id_movimiento} className="card">
               <div>
-                <h3 style={{ margin: 0 }}>{producto ? producto.nombre : `#${mov.id_producto}`}</h3>
+                <h3 style={{ margin: 0 }}>
+                  {productoNombre ? productoNombre : `Producto #${mov.id_producto}`}
+                </h3>
                 <div className="meta" style={{ marginTop: 6, alignItems: 'center' }}>
                   <div
                     className="badge"

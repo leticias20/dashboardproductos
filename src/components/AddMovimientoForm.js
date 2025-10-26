@@ -35,7 +35,7 @@ const AddMovimientoForm = () => {
   };
 
   return (
-    <form className="add-form" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '3px', width: '1000px' }}>
+     <form className="add-form" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '3px', width: '100px' }}>
    <select
         name="id_producto"
         value={nuevoMovimiento.id_producto}

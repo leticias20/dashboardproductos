@@ -100,7 +100,7 @@ body{
 
 .header-controls > * {
   display: inline-flex;
-  align-items: center;
+  align-items: left;
   gap: 8px;
   height: 40px;            /* misma altura para inputs/botones en header */
 }
