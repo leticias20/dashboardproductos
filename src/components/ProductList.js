@@ -96,13 +96,13 @@ const Dashboard = () => {
           <HamburgerMenu>
             <ul style={{ listStyle: 'none', padding: 8, margin: 0 }}>
               <li><Link to="/">Inicio</Link></li>
-              <li><Link to="/productos">Dashboard de Productos</Link></li>
-              <li><Link to="/movimientos">Dashboard de Movimientos</Link></li>
+              <li><Link to="/productos">Catálogo de Productos</Link></li>
+              <li><Link to="/movimientos">Catálogo de Movimientos</Link></li>
             </ul>
           </HamburgerMenu>
 
           <div className="dashboard-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-            <h1 style={{ margin: 0, fontSize: '1.45rem', whiteSpace: 'nowrap' }}>Dashboard de Productos</h1>
+            <h1 style={{ margin: 0, fontSize: '1.45rem', whiteSpace: 'nowrap' }}>Catálogo de Productos</h1>
             <span className="badge">Inventario</span>
           </div>
         </div>

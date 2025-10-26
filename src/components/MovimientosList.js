@@ -75,13 +75,13 @@ const MovimientosList = () => {
           <HamburgerMenu>
             <ul style={{ listStyle: 'none', padding: 8, margin: 0 }}>
               <li><Link to="/">Inicio</Link></li>
-              <li><Link to="/productos">Dashboard de Productos</Link></li>
-              <li><Link to="/movimientos">Dashboard de Movimientos</Link></li>
+              <li><Link to="/productos">Catálogo de Productos</Link></li>
+              <li><Link to="/movimientos">Catálogo de Movimientos</Link></li>
             </ul>
           </HamburgerMenu>
 
           <div className="dashboard-title" style={{ display: 'inline-flex', alignItems: 'left', gap: 8 }}>
-            <h1 style={{ margin: 0, fontSize: '1.45rem', whiteSpace: 'nowrap' }}>Dashboard de Movimientos</h1>
+            <h1 style={{ margin: 0, fontSize: '1.45rem', whiteSpace: 'nowrap' }}>Catálogo de Movimientos</h1>
             <span className="badge">Movimientos</span>
           </div>
         </div>
